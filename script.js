@@ -1,11 +1,9 @@
-
 // Wait for the DOM to be fully loaded
 document.addEventListener("DOMContentLoaded", function() {
-  // Get the expense form, expense list, budget section, and chart container elements
+  // Get the expense form, expense list, and budget section elements
   const expenseForm = document.getElementById("expense-form");
   const expenseList = document.getElementById("expense-list");
   const budgetSection = document.getElementById("budgets");
-  const chartContainer = document.getElementById("expense-chart");
 
   // Initialize an empty array to store expenses
   let expenses = [];
@@ -36,9 +34,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Render the updated expense list
     renderExpenseList();
-
-    // Generate the expense chart
-    generateExpenseChart();
   });
 
   // Function to render the expense list
@@ -75,93 +70,42 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   }
 
-// Function to handle editing an expense
-function handleEditExpense(index) {
-  const expenseToEdit = expenses[index];
-  // Perform the desired action for editing an expense
-  console.log("Edit button clicked");
-  console.log("Expense to edit:", expenseToEdit);
-  
-  // Add your code for editing the expense here
-  // For example, you can show a modal or form to edit the expense details
-  const updatedCategory = prompt("Enter the updated category:", expenseToEdit.category);
-  const updatedAmount = prompt("Enter the updated amount:", expenseToEdit.amount);
-  const updatedDescription = prompt("Enter the updated description:", expenseToEdit.description);
+  // Function to handle editing an expense
+  function handleEditExpense(index) {
+    const expenseToEdit = expenses[index];
+    // Perform the desired action for editing an expense
+    console.log("Edit button clicked");
+    console.log("Expense to edit:", expenseToEdit);
+    // Add your code for editing the expense here
+    // For example, you can show a modal or form to edit the expense details
+    const updatedCategory = prompt("Enter the updated category:", expenseToEdit.category);
+    const updatedAmount = prompt("Enter the updated amount:", expenseToEdit.amount);
+    const updatedDescription = prompt("Enter the updated description:", expenseToEdit.description);
 
-  // Update the expense properties
-  expenseToEdit.category = updatedCategory;
-  expenseToEdit.amount = updatedAmount;
-  expenseToEdit.description = updatedDescription;
+    // Update the expense properties
+    expenseToEdit.category = updatedCategory;
+    expenseToEdit.amount = updatedAmount;
+    expenseToEdit.description = updatedDescription;
 
-  // After editing the expense, render the updated expense list
-  renderExpenseList();
-}
-
-// Function to handle deleting an expense
-function handleDeleteExpense(index) {
-  const expenseToDelete = expenses[index];
-  // Perform the desired action for deleting an expense
-  console.log("Delete button clicked");
-  console.log("Expense to delete:", expenseToDelete);
-  
-  // Add your code for deleting the expense here
-  // For example, you can show a confirmation dialog to confirm the deletion
-  const confirmDeletion = confirm("Are you sure you want to delete this expense?");
-  if (confirmDeletion) {
-    // Remove the expense from the expenses array
-    expenses.splice(index, 1);
-
-    // After deleting the expense, render the updated expense list
+    // After editing the expense, render the updated expense list
     renderExpenseList();
   }
 
+  // Function to handle deleting an expense
+  function handleDeleteExpense(index) {
+    const expenseToDelete = expenses[index];
+    // Perform the desired action for deleting an expense
+    console.log("Delete button clicked");
+    console.log("Expense to delete:", expenseToDelete);
+    // Add your code for deleting the expense here
 
-    // Generate the updated expense chart
-    generateExpenseChart();
-  }
+    // Remove the expense from the expenses array
+    expenses.splice(index, 1);
 
-  // Function to generate the expense chart
-  function generateExpenseChart() {
-    // Clear the existing chart container
-    chartContainer.innerHTML = "";
-
-    // Use a charting library like Chart.js to generate the chart
-    // Create a canvas element for the chart
-    const chartCanvas = document.createElement("canvas");
-    chartCanvas.id = "expense-chart";
-
-    // Append the chart canvas to the chart container
-    chartContainer.appendChild(chartCanvas);
-
-    // Create the chart using the expenses data
-    const ctx = chartCanvas.getContext("2d");
-    const chart = new Chart(ctx, {
-      type: "bar",
-      data: {
-        labels: expenses.map(expense => expense.category),
-        datasets: [
-          {
-            label: "Expense Amount",
-            data: expenses.map(expense => expense.amount),
-            backgroundColor: "rgba(75, 192, 192, 0.2)",
-            borderColor: "rgba(75, 192, 192, 1)",
-            borderWidth: 1
-          }
-        ]
-      },
-      options: {
-        scales: {
-          y: {
-            beginAtZero: true
-          }
-        }
-      }
-    });
+    // Render the updated expense list
+    renderExpenseList();
   }
 
   // Render the initial expense list
   renderExpenseList();
-
-  // Generate the initial expense chart
-  generateExpenseChart();
 });

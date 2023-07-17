@@ -11,71 +11,50 @@
       <nav>
         <h1>Expense Tracker</h1>
         <ul>
-          <li><a href="#">Home</a></li>
-          <li><a href="#">Expenses</a></li>
-          <li><a href="#">Budgets</a></li>
-          <li><a href="#">Reports</a></li>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="expenses.html">Expenses</a></li>
+          <li><a href="budgets.html">Budgets</a></li>
+          <li><a href="reports.html">Reports</a></li>
+          <li><a href="login-signup.html">Login/Signup</a></li>
         </ul>
       </nav>
     </header>
-
+       
     <main>
-      <section id="expense-form">
-        <h2>Add Expense</h2>
-        <form>
-          <label for="category">Category</label>
-          <input type="text" id="category" name="category" required>
-          <label for="amount">Amount</label>
-          <input type="number" id="amount" name="amount" required>
-          <label for="description">Description</label>
-          <textarea id="description" name="description"></textarea>
-          <button type="submit">Add Expense</button>
-        </form>
-      </section>
-
-      <section id="expense-list">
-        <h2>Expense List</h2>
-        <ul>
-          <li>
-            <div class="expense-item">
-              <span class="category">Food</span>
-              <span class="amount">$10.00</span>
-              <span class="description">Lunch</span>
-              <button class="edit-btn">Edit</button>
-              <button class="delete-btn">Delete</button>
-            </div>
-          </li>
-          <!-- Add more expense items dynamically -->
-        </ul>
-      </section>
-
-      <section id="budgets">
-        <h2>Budgets</h2>
-        <div class="budget-item">
-          <span class="category">Food</span>
-          <span class="amount">$200</span>
-        </div>
-        <div class="budget-item">
-          <span class="category">Transportation</span>
-          <span class="amount">$100</span>
-        </div>
-        <div class="budget-item">
-          <span class="category">Entertainment</span>
-          <span class="amount">$150</span>
+      <section id="hero">
+        <div class="hero-content">
+          <h2>Welcome to the Expense Tracker!</h2>
+          <p>Track your expenses and manage your budget with ease.</p>
+          <a href="expenses.html" class="btn">Get Started</a>
         </div>
       </section>
-
-      <section id="reports">
-        <h2>Reports</h2>
-        <div class="chart-container">
-          <canvas id="expense-chart"></canvas>
+      
+      <section id="features">
+        <h2>Key Features</h2>
+        <div class="feature-item">
+          <h3>Expense Management</h3>
+          <p>Easily track and categorize your expenses to gain better insights into your spending habits.</p>
         </div>
-      </section>    
+        <div class="feature-item">
+          <h3>Budget Planning</h3>
+          <p>Create and manage budgets to effectively plan your finances and achieve your financial goals.</p>
+        </div>
+        <div class="feature-item">
+          <h3>Reporting</h3>
+          <p>Generate detailed reports and visual charts to analyze your expenses and monitor your financial health.</p>
+        </div>
+      </section>
+      
+      
+      <section id="cta">
+        <h2>Start Managing Your Expenses Today</h2>
+        <p>Sign up now and take control of your finances with Expense Tracker.</p>
+        <a href="login-signup.html" class="btn">Sign Up</a>
+      </section>
     </main>
+    
     <footer>
       <p>&copy; 2023 Expense Tracker. All rights reserved.</p>
     </footer>
-    <script src="file:///Users/rajatphogat/Desktop/new/node_modules/chart.js/dist/chart.js"></script>
-    <script src="script.js"></script>
   </body>
 </html>

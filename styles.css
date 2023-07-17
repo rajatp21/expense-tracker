@@ -12,12 +12,134 @@ body {
   background-color: #f4f4f4;
 }
 
-h1, h2 {
+h1, h2, h3 {
   color: #333;
 }
 
+a {
+  color: #333;
+  text-decoration: none;
+}
+
 header {
+  background-color: #222;
+  padding: 20px;
+  color: #fff; /* Change text color to white */
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+}
+
+nav ul li {
+  margin-left: 20px;
+}
+
+nav ul li a {
+  color: #fff; /* Change link color to white */
+}
+
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+section {
+  margin-bottom: 30px;
+}
+
+section h2 {
+  margin-bottom: 10px;
+}
+
+.btn {
+  margin-top: 20px;
+  display: inline-block;
+  padding: 10px 20px;
   background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  text-decoration: none;
+}
+
+#hero {
+  text-align: center;
+  padding: 40px 0;
+  background-color: #f7931e;
+  color: #fff;
+}
+
+.hero-content {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+#features {
+  text-align: center;
+  padding: 40px 0;
+  background-color: #3fbc43;
+  color: #fff;
+}
+
+.feature-item {
+  margin-bottom: 30px;
+}
+
+.feature-item h3 {
+  margin-bottom: 10px;
+}
+
+.feature-item p {
+  margin-bottom: 10px;
+}
+
+#cta {
+  text-align: center;
+  padding: 40px 0;
+  background-color: #a4777e;
+  color: #fff;
+}
+
+footer {
+  background-color: #333;
+  padding: 10px;
+  color: #fff;
+  text-align: center;
+}
+/* Reset default styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Global styles */
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.5;
+  background-color: #f4f4f4;
+}
+
+h1, h2 {
+  color: rgb(94, 94, 113);
+}
+
+a {
+  color: #333;
+  text-decoration: none;
+}
+
+header {
+  background-color: #222;
   padding: 20px;
   color: #fff;
 }
@@ -39,7 +161,6 @@ nav ul li {
 
 nav ul li a {
   color: #fff;
-  text-decoration: none;
 }
 
 main {
@@ -61,8 +182,7 @@ form label {
   margin-bottom: 5px;
 }
 
-form input,
-form textarea {
+form input {
   width: 100%;
   padding: 10px;
   border: 1px solid #ccc;
@@ -79,83 +199,9 @@ button {
   cursor: pointer;
 }
 
-ul {
-  list-style: none;
-}
-
-.expense-item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: #fff;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+p {
   margin-bottom: 10px;
 }
-
-.edit-btn,
-.delete-btn {
-  padding: 5px 10px;
-  background-color: #333;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-.save-btn {
-  padding: 5px 10px;
-  background-color: #333;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-#budgets {
-  margin-bottom: 30px;
-}
-
-#budgets h2 {
-  margin-bottom: 10px;
-}
-
-.budget-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #f4f4f4;
-  padding: 10px;
-  border-radius: 4px;
-  margin-bottom: 10px;
-}
-
-.budget-item .category {
-  font-weight: bold;
-}
-
-.budget-item .amount {
-  color: green;
-}
-
-#reports {
-  margin-bottom: 30px;
-}
-
-#reports h2 {
-  margin-bottom: 10px;
-}
-
-.chart-container {
-  width: 100%;
-  height: 400px; /* Set the height of the chart container */
-  margin: 20px auto;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  padding: 10px;
-  background-color: #fff;
-}
-
 
 footer {
   background-color: #333;
