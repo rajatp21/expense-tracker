@@ -51,18 +51,31 @@
 
       <section id="budgets">
         <h2>Budgets</h2>
-        <!-- Add budget-related content -->
+        <div class="budget-item">
+          <span class="category">Food</span>
+          <span class="amount">$200</span>
+        </div>
+        <div class="budget-item">
+          <span class="category">Transportation</span>
+          <span class="amount">$100</span>
+        </div>
+        <div class="budget-item">
+          <span class="category">Entertainment</span>
+          <span class="amount">$150</span>
+        </div>
       </section>
 
       <section id="reports">
         <h2>Reports</h2>
-        <!-- Add report-related content -->
-      </section>
+        <div class="chart-container">
+          <canvas id="expense-chart"></canvas>
+        </div>
+      </section>    
     </main>
-
     <footer>
       <p>&copy; 2023 Expense Tracker. All rights reserved.</p>
     </footer>
+    <script src="file:///Users/rajatphogat/Desktop/new/node_modules/chart.js/dist/chart.js"></script>
     <script src="script.js"></script>
   </body>
 </html>
