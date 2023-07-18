@@ -9,7 +9,7 @@
 body {
   font-family: Arial, sans-serif;
   line-height: 1.5;
-  background-color: #f4f4f4;
+  background-color: #c0bebe;
 }
 
 h1, h2, h3 {
@@ -86,7 +86,7 @@ section h2 {
 #features {
   text-align: center;
   padding: 40px 0;
-  background-color: #3fbc43;
+  background-color: #3f7dbc;
   color: #fff;
 }
 
@@ -126,11 +126,11 @@ footer {
 body {
   font-family: Arial, sans-serif;
   line-height: 1.5;
-  background-color: #f4f4f4;
+  background-color: #c9c6c65a;
 }
 
 h1, h2 {
-  color: rgb(94, 94, 113);
+  color:  #ffffff;
 }
 
 a {
