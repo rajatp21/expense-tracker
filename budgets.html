@@ -1,32 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Expense Tracker - Budgets</title>
-    <link rel="stylesheet" href="styles.css">
-  </head>
-  <body>
-    <header>
-        <nav>
-          <h1>Expense Tracker</h1>
-          <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="expenses.html">Expenses</a></li>
-            <li><a href="budgets.html">Budgets</a></li>
-            <li><a href="reports.html">Reports</a></li>
-            <li><a href="login-signup.html">Login/Signup</a></li>
-          </ul>
-        </nav>
-      </header>
-           
-    <main>
-      <!-- Budgets page content here -->
-      <h2>Budgets</h2>
-      <p>This is the budgets page of the Expense Tracker application.</p>
-    </main>
-    <footer>
-      <p>&copy; 2023 Expense Tracker. All rights reserved.</p>
-    </footer>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Expense Tracker - Budget Page</title>
+</head>
+<body>
+  <header>
+    <h1>Expense Tracker</h1>
+    <!-- Navigation links for other pages (e.g., Home, Expenses, Reports) -->
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Expenses</a></li>
+        <li><a href="#">Reports</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="budget-summary">
+      <h2>Budget Summary</h2>
+      <p>Total Income: $XXXX</p>
+      <p>Total Expenses: $XXXX</p>
+      <p>Remaining Budget: $XXXX</p>
+    </section>
+
+    <section id="expense-categories">
+      <h2>Expense Categories</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Category</th>
+            <th>Budget Amount</th>
+            <th>Spent Amount</th>
+            <th>Progress</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Rows for each expense category with budget details -->
+          <tr>
+            <td>Housing</td>
+            <td>$XXXX</td>
+            <td>$XXXX</td>
+            <td>
+              <!-- Progress bar (using CSS) to visually indicate budget progress -->
+              <div class="progress-bar" style="width: XX%;"></div>
+            </td>
+          </tr>
+          <!-- Other rows for additional expense categories -->
+        </tbody>
+      </table>
+    </section>
+
+    <section id="budget-insights">
+      <h2>Budget Insights</h2>
+      <!-- Charts or visualizations displaying spending patterns and insights -->
+      <!-- Historical comparison graphs -->
+    </section>
+    <!-- ... Previous code ... -->
+
+<section id="budget-alerts">
+  <h2>Budget Alerts</h2>
+  <ul>
+    <!-- List of alerts for specific expense categories nearing budget limits -->
+    <li><strong>Housing:</strong> You've almost reached your budget limit for this category.</li>
+    <!-- Add more alerts for other categories as needed -->
+  </ul>
+</section>
+
+<section id="budget-adjustments">
+  <h2>Budget Adjustments</h2>
+  <!-- Form for users to adjust budget amounts for each category -->
+  <form id="budget-adjustment-form">
+    <label for="housing-budget">Housing Budget:</label>
+    <input type="number" id="housing-budget" name="housing-budget" value="XXXX">
+
+    <!-- Add similar input fields for other expense categories -->
+
+    <button type="submit">Update Budget</button>
+  </form>
+</section>
+
+<section id="budget-rollovers">
+  <h2>Budget Rollovers</h2>
+  <!-- Option for users to enable or disable budget rollovers -->
+  <label for="enable-rollovers">Enable Budget Rollovers:</label>
+  <input type="checkbox" id="enable-rollovers" name="enable-rollovers">
+</section>
+
+<section id="progress-towards-goals">
+  <h2>Progress Towards Goals</h2>
+  <ul>
+    <!-- List of financial goals and the progress towards achieving them -->
+    <li><strong>Vacation Savings:</strong> 40% of the goal achieved.</li>
+    <!-- Add more goals and their progress -->
+  </ul>
+</section>
+
+<!-- ... Remaining code ... -->
+
+    <!-- Other sections or elements for alerts, adjustments, etc. -->
+
+  </main>
+
+  <footer>
+    <!-- Footer content -->
+  </footer>
+</body>
 </html>
