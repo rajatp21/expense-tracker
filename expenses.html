@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>Expense Management</title>
+    <title>Expense Tracker</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="bubble.css">
     <link rel="stylesheet" href="STY1.css">
     <link rel="stylesheet" href="STY.css">
     <link rel="stylesheet" href="font1.css">
@@ -22,203 +23,213 @@
     <link href="font1.css" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <style>
-      html, body {
-      min-height: 100%;
+      * {
+        box-sizing: border-box;
       }
-      [type="date"]::-webkit-calendar-picker-indicator {
-      right: 0;
-      z-index: 2;
-      opacity: 0;
-      cursor: pointer;
+      
+      input[type=text], select, textarea {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        resize: vertical;
       }
-      body, div, form, input, select { 
-      padding: 0;
-      margin: 0;
-      outline: none;
-      font-family: Roboto, Arial, sans-serif;
-      font-size: 14px;
-      color: #666;
-      line-height: 22px;
+      
+      label {
+        padding: 12px 12px 12px 0;
+        display: inline-block;
       }
-      h1, h4 {
-      margin: 15px 0 4px;
-      font-weight: 400;
+      
+      input[type=submit] {
+        background-color: #f44336;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        float: right;
       }
-      h4 {
-      margin: 20px 0 4px;
-      font-weight: 400;
+      
+      input[type=submit]:hover {
+        background-color: #45a049;
       }
-      span {
-      color: red;
+      
+      .container {
+        border-radius: 5px;
+        background-color: #f2f2f2;
+        padding: 20px;
       }
-      .small {
-      font-size: 10px;
-      line-height: 18px;
+      
+      .col-25 {
+        float: left;
+        width: 25%;
+        margin-top: 6px;
       }
-      .testbox {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: inherit;
-      padding: 3px;
+      
+      .col-75 {
+        float: left;
+        width: 75%;
+        margin-top: 6px;
       }
-      form {
-      width: 100%;
-      padding: 20px;
-      background: #fff;
-      box-shadow: 0 2px 5px #ccc; 
+      
+      /* Clear floats after the columns */
+      .row::after {
+        content: "";
+        display: table;
+        clear: both;
       }
-      input {
-      width: calc(100% - 10px);
-      padding: 5px;
-      border: 1px solid #ccc;
-      border-radius: 3px;
-      vertical-align: middle;
+      
+      /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+      @media screen and (max-width: 600px) {
+        .col-25, .col-75, input[type=submit] {
+          width: 100%;
+          margin-top: 0;
+        }
       }
-      input:hover, textarea:hover, select:hover {
-      outline: none;
-      border: 1px solid #095484;
-      background: #e6eef7;
-      }
-      .title-block select, .title-block input {
-      margin-bottom: 10px;
-      }
-      select {
-      padding: 7px 0;
-      border-radius: 3px;
-      border: 1px solid #ccc;
-      background: transparent;
-      }
-      select, table {
-      width: 100%;
-      }
-      option {
-      background: #fff;
-      }
-      .day-visited, .time-visited {
-      position: relative;
-      }
-      input[type="date"]::-webkit-inner-spin-button {
-      display: none;
-      }
-      input[type="time"]::-webkit-inner-spin-button {
-      margin: 2px 22px 0 0;
-      }
-      .day-visited i, .time-visited i, input[type="date"]::-webkit-calendar-picker-indicator {
-      position: absolute;
-      top: 8px;
-      font-size: 20px;
-      }
-      .day-visited i, .time-visited i {
-      right: 5px;
-      z-index: 1;
-      color: #a9a9a9;
-      }
-      [type="date"]::-webkit-calendar-picker-indicator {
-      right: 0;
-      z-index: 2;
-      opacity: 0;
-      }
-      .question-answer label {
-      display: block;
-      padding: 0 20px 10px 0;
-      }
-      .question-answer input {
-      width: auto;
-      margin-top: -2px;
-      }
-      th, td {
-      width: 18%;
-      padding: 15px 0;
-      border-bottom: 1px solid #ccc;
-      text-align: center;
-      vertical-align: unset;
-      line-height: 18px;
-      font-weight: 400;
-      word-break: break-all;
-      }
-      .first-col {
-      width: 25%;
-      text-align: left;
-      }
-      textarea {
-      width: calc(100% - 6px);
-      }
-      .btn-block {
-      margin-top: 20px;
-      text-align: center;
-      }
-      button {
-      width: 150px;
-      padding: 10px;
-      border: none;
-      -webkit-border-radius: 5px; 
-      -moz-border-radius: 5px; 
-      border-radius: 5px; 
-      background-color: #095484;
-      font-size: 16px;
-      color: #fff;
-      cursor: pointer;
-      }
-      button:hover {
-      background-color: #0666a3;
-      }
-      @media (min-width: 568px) {
-      .title-block {
-      display: flex;
-      justify-content: space-between;
-      }
-      .title-block select {
-      width: 30%;
-      margin-bottom: 0;
-      }
-      .title-block input {
-      width: 31%;
-      margin-bottom: 0;
-      }
-      th, td {
-      word-break: keep-all;
-      }
-      }
-
-    </style>
+      </style>
   </head>
-  <body>
-    <div class="rajat-top">
-      <div class="rajat-bar rajat-red rajat-card rajat-right-align rajat-large">
-        <a class="rajat-bar-item rajat-button rajat-hide-medium rajat-hide-large rajat-right rajat-padding-large rajat-hover-white rajat-large rajat-red" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
-        <a href="login-signup.html" class="rajat-bar-item rajat-button rajat-hide-small rajat-padding-large rajat-hover-white rajat-right">Login/Signup</a>
-        <a href="index.html" class="rajat-bar-item rajat-button rajat-padding-large rajat-white rajat-left">Home</a>
-        <a href="reports.html" class="rajat-bar-item rajat-button rajat-hide-small rajat-padding-large rajat-hover-white rajat-right">Reports</a>
-        <a href="budgets.html" class="rajat-bar-item rajat-button rajat-hide-small rajat-padding-large rajat-hover-white rajat-right">Budgets</a>
-        <a href="expenses.html" class="rajat-bar-item rajat-button rajat-hide-small rajat-padding-large rajat-hover-white rajat-right">Expenses</a>
+<body>
+
+<!-- Navbar -->
+<div class="rajat-top">
+  <div class="rajat-bar rajat-red rajat-card rajat-right-align rajat-large">
+    <a class="rajat-bar-item rajat-button rajat-hide-medium rajat-hide-large rajat-right rajat-padding-large rajat-hover-white rajat-large rajat-red" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+    <a href="login-signup.html" class="rajat-bar-item rajat-button rajat-hide-small rajat-padding-large rajat-hover-white rajat-right">Login/Signup</a>
+    <a href="index.html" class="rajat-bar-item rajat-button rajat-padding-large rajat-white rajat-left">Home</a>
+    <a href="reports.html" class="rajat-bar-item rajat-button rajat-hide-small rajat-padding-large rajat-hover-white rajat-right">Reports</a>
+    <a href="budgets.html" class="rajat-bar-item rajat-button rajat-hide-small rajat-padding-large rajat-hover-white rajat-right">Budgets</a>
+    <a href="expenses.html" class="rajat-bar-item rajat-button rajat-hide-small rajat-padding-large rajat-hover-white rajat-right">Expenses</a>
+  </div>
+
+  <!-- Navbar on small screens -->
+  <div id="navDemo" class="rajat-bar-block rajat-white rajat-hide rajat-hide-large rajat-hide-medium rajat-large">
+          <li><a href="expenses.html">Expenses</a></li>
+          <li><a href="budgets.html">Budgets</a></li>
+          <li><a href="reports.html">Reports</a></li>
+          <li><a href="login-signup.html">Login/Signup</a></li>
+  </div>
+</div>
+
+<!-- Header -->
+<header class="rajat-container rajat-red rajat-center" style="padding:128px 16px">
+  <h1 class="rajat-margin rajat-jumbo">Expense Tracker</h1>
+  <p class="rajat-xlarge">Track Your Expenses, Master Your Finances!</p>
+</header>
+<br>
+      <div class="rajat-large rajat-margin">
+        <h2 class="rajat-center">Expense List</h2>
+        <table class="rajat-table-all">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Amount</th>
+              <th>Category</th>
+              <th>Description</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Table rows to display existing expenses -->
+            <tr>
+          <td>2023-07-17</td>
+          <td>$50.00</td>
+          <td>Food</td>
+          <td>Lunch with friends</td>
+          <td>
+            <!-- Edit button for the first row -->
+            <button class="rajat-button rajat-red rajat-round-large" onclick="editExpense(0)">Edit</button>
+          </td>
+        </tr>
+            <tr>
+          <td>2023-07-17</td>
+          <td>$50.00</td>
+          <td>Food</td>
+          <td>Lunch with friends</td>
+          <td>
+            <!-- Edit button for the first row -->
+            <button class="rajat-button rajat-red rajat-round-large" onclick="editExpense(1)">Edit</button>
+          </td>
+        </tr>
+            <tr>
+          <td>2023-07-17</td>
+          <td>$50.00</td>
+          <td>Food</td>
+          <td>Lunch with friends</td>
+          <td>
+            <!-- Edit button for the first row -->
+            <button class="rajat-button rajat-red rajat-round-large" onclick="editExpense(2)">Edit</button>
+          </td>
+        </tr>
+            <tr>
+          <td>2023-07-17</td>
+          <td>$50.00</td>
+          <td>Food</td>
+          <td>Lunch with friends</td>
+          <td>
+            <!-- Edit button for the first row -->
+            <button class="rajat-button rajat-red rajat-round-large" onclick="editExpense(3)">Edit</button>
+          </td>
+        </tr>
+            <!-- Add more rows for other expenses -->
+          </tbody>
+        </table>
       </div>
-    <div class="testbox">
-      <form action="/">
-        <h1 class="rajat-margin rajat-hover-border-black rajat-center">Expense Management Form</h1>
-        <h4>Expense Category<span>*</span></h4>
-        <select>
-          <option value=""></option>
-          <option value="1">Food</option>
-          <option value="2">Travel</option>
-          <option value="3">Entertainment</option>
-          <option value="5">Clothing</option>
-          <option value="6">Health</option>
-          <option value="7">Housing</option>
-          <option value="8">Utilities</option>
-          <option value="9">Miscellaneous</option>
-        </select>
-        <h4>Expense Amount<span>*</span></h4>
-        <input type="number" name="name" />
-        <h4>Expense Date<span>*</span></h4>
-        <input type="date">
-        <h4>Discription</h4>
-        <textarea rows="5"></textarea>
-        <div class="rajat-container rajat-white rajat-center" style="padding:10px 16px">
-          <button class="rajat-button rajat-hover-red rajat-black  rajat-animate-zoom rajat-large" type="submit" href="/" style="padding:12px 10px">Add Expense</button>
+      <br>
+      <div class="rajat-large rajat-center rajat-margin">
+        <h2>Add Expenses</h2>
+      </div>  
+      <div class="container rajat-margin">
+        <form action="/action_page.php">
+          <div class="row">
+            <div class="col-25 rajat-large">
+              <label for="Category">Category</label>
+            </div>
+            <div class="col-75 rajat-border-light-grey">
+              <select id="category" name="Category">
+                <option value=""></option>
+            <option value="1">Food Budget</option>
+            <option value="2">Travel Budget</option>
+            <option value="3">Entertainment Budget</option>
+            <option value="5">Clothing Budget</option>
+            <option value="6">Health Budget</option>
+            <option value="7">Housing Budget</option>
+            <option value="8">Utilities Budget</option>
+            <option value="9">Miscellaneous Budget</option>
+              </select>
+            </div>
+          </div>
+        <div class="row">
+          <div class="col-25 rajat-large rajat-border-0">
+            <label for="Amount">Amount</label>
+          </div>
+          <div class="col-75 rajat-border-0">
+            <input style="width: 100%;height: 45px;" type="number" id="Amount" name="Amount" placeholder="Amount..">
+          </div>
         </div>
-      </form>
-    </div>
+        <div class="row">
+          <div class="col-25 rajat-large">
+            <label for="Date">Expense Date</label>
+          </div>
+          <div class="col-75 rajat-large" style="width:75%;height: 45px">
+            <input type="date" id="Date" name="Date">
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="col-25 rajat-large rajat-border-0">
+            <label for="Description">Description</label>
+          </div>
+          <div class="col-75 rajat-border-0">
+            <textarea id="Description" name="Description" placeholder="Write something.." style="height:100px"></textarea>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <input type="submit" value="Submit">
+        </div>
+        </form>
+      </div>
+
   </body>
   <footer class="rajat-container rajat-padding-32 rajat-center rajat-opacity"> 
     <div class="rajat-xlarge rajat-padding-32">

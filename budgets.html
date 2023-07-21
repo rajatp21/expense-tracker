@@ -4,108 +4,242 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Expense Tracker - Budget Page</title>
+  <link rel="stylesheet" href="bubble.css">
+    <link rel="stylesheet" href="STY1.css">
+    <link rel="stylesheet" href="STY.css">
+    <link rel="stylesheet" href="font1.css">
+    <link rel="stylesheet" href="font2.css">
+    <link rel="stylesheet" href="font3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
+    <style>
+    body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
+    .rajat-bar,h1,button {font-family: "Montserrat", sans-serif}
+    .fa-anchor,.fa-coffee {font-size:200px}
+    </style>
 </head>
 <body>
-  <header>
-    <h1>Expense Tracker</h1>
-    <!-- Navigation links for other pages (e.g., Home, Expenses, Reports) -->
-    <nav>
-      <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Expenses</a></li>
-        <li><a href="#">Reports</a></li>
-      </ul>
-    </nav>
+  <div class="rajat-top">
+    <div class="rajat-bar rajat-red rajat-card rajat-right-align rajat-large">
+      <a class="rajat-bar-item rajat-button rajat-hide-medium rajat-hide-large rajat-right rajat-padding-large rajat-hover-white rajat-large rajat-red" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+      <a href="login-signup.html" class="rajat-bar-item rajat-button rajat-hide-small rajat-padding-large rajat-hover-white rajat-right">Login/Signup</a>
+      <a href="index.html" class="rajat-bar-item rajat-button rajat-padding-large rajat-white rajat-left">Home</a>
+      <a href="reports.html" class="rajat-bar-item rajat-button rajat-hide-small rajat-padding-large rajat-hover-white rajat-right">Reports</a>
+      <a href="budgets.html" class="rajat-bar-item rajat-button rajat-hide-small rajat-padding-large rajat-hover-white rajat-right">Budgets</a>
+      <a href="expenses.html" class="rajat-bar-item rajat-button rajat-hide-small rajat-padding-large rajat-hover-white rajat-right">Expenses</a>
+    </div>
+  
+    <!-- Navbar on small screens -->
+    <div id="navDemo" class="rajat-bar-block rajat-white rajat-hide rajat-hide-large rajat-hide-medium rajat-large">
+            <li><a href="expenses.html">Expenses</a></li>
+            <li><a href="budgets.html">Budgets</a></li>
+            <li><a href="reports.html">Reports</a></li>
+            <li><a href="login-signup.html">Login/Signup</a></li>
+    </div>
+  </div>
+  <header class="rajat-container rajat-red rajat-center rajat-margin-top" style="padding:38px 16px">
+    <h1 class="rajat-margin rajat-round-xlarge">Expense Tracker</h1>
+    <p class="rajat-large">Track Your Expenses, Master Your Finances!</p>
   </header>
-
-  <main>
-    <section id="budget-summary">
+  <div class="rajat-container rajat-center rajat-large">
+    <section class="rajat-round-large rajat-card rajat-padding-large rajat-margin-top rajat-margin-bottom" id="budget-summary">
       <h2>Budget Summary</h2>
-      <p>Total Income: $XXXX</p>
-      <p>Total Expenses: $XXXX</p>
-      <p>Remaining Budget: $XXXX</p>
+      <h4>Total Income: $XXXX</h4>
+      <h4>Total Expenses: $XXXX</h4>
+      <h4>Remaining Budget: $XXXX</h4>
     </section>
 
-    <section id="expense-categories">
+    <section class="rajat-center rajat-large rajat-container" id="expense-categories">
       <h2>Expense Categories</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Category</th>
-            <th>Budget Amount</th>
-            <th>Spent Amount</th>
-            <th>Progress</th>
-          </tr>
-        </thead>
-        <tbody>
-          <!-- Rows for each expense category with budget details -->
-          <tr>
-            <td>Housing</td>
+      <table class="rajat-table-all">
+        <tr class="rajat-hover-text-grey">
+            <th><strong>Category</strong></th>
+            <th><strong>Budget Amount</strong></th>
+            <th><strong>Spent Amount</strong></th>
+            <th><strong>Progress</strong></th>
+        </tr>
+        <tr>
+          <td>Food</td>
+            <td>$XXXX</td>
+            <td>$XXXX</td>
+            <td>
+              <div class="rajat-green">
+                <div class="rajat-red" style="height :24px; width: 10%;"></div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+          <td>Travel</td>
+            <td>$XXXX</td>
+            <td>$XXXX</td>
+            <td>
+              <div class="rajat-green">
+                <div class="rajat-red" style="height :24px; width: 20%;"></div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+          <td>Entertainmet</td>
+            <td>$XXXX</td>
+            <td>$XXXX</td>
+            <td>
+              <div class="rajat-green">
+                <div class="rajat-red" style="height :24px; width: 30%;"></div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+          <td>Clothing</td>
+            <td>$XXXX</td>
+            <td>$XXXX</td>
+            <td>
+              <div class="rajat-green">
+                <div class="rajat-red" style="height :24px; width: 40%;"></div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+          <td>Health</td>
+            <td>$XXXX</td>
+            <td>$XXXX</td>
+            <td>
+              <div class="rajat-green">
+                <div class="rajat-red" style="height :24px; width: 50%;"></div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+          <td>Utilities</td>
+            <td>$XXXX</td>
+            <td>$XXXX</td>
+            <td>
+              <div class="rajat-green">
+                <div class="rajat-red" style="height :24px; width: 60%;"></div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+          <td>Housing</td>
             <td>$XXXX</td>
             <td>$XXXX</td>
             <td>
               <!-- Progress bar (using CSS) to visually indicate budget progress -->
-              <div class="progress-bar" style="width: XX%;"></div>
+              <div class="rajat-green">
+              <div class="rajat-red" style="height :24px; width: 70%;"></div>
+              </div>
             </td>
-          </tr>
-          <!-- Other rows for additional expense categories -->
-        </tbody>
-      </table>
+        </tr>
+        <tr>
+          <td>Miscellaneous</td>
+            <td>$XXXX</td>
+            <td>$XXXX</td>
+            <td>
+              <div class="rajat-green">
+                <div class="rajat-red" style="height :24px; width: 80%;"></div>
+                </div>
+            </td>
+        </tr>
+        </table>
     </section>
 
     <section id="budget-insights">
       <h2>Budget Insights</h2>
-      <!-- Charts or visualizations displaying spending patterns and insights -->
+      <div id="myChart" style="width:100%; max-width:10000px; height:500px;">
+      </div><!-- Charts or visualizations displaying spending patterns and insights -->
       <!-- Historical comparison graphs -->
     </section>
+    <script>
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+      
+      function drawChart() {
+      
+      // Set Data
+      const data = google.visualization.arrayToDataTable([
+        ['Contry', 'Mhl'],
+        ['Food',24],
+        ['Entertainment',42],
+        ['Housing',34],
+        ['Health',30],
+        ['Miscellaneous',22],
+        ['Utilities',10],
+        ['Travel',12],
+        ['Clothing',25],
+      ]);
+      
+      // Set Options
+      const options = {
+        title:'Expenses per category',
+        is3D:true
+      };
+      
+      // Draw
+      const chart = new google.visualization.PieChart(document.getElementById('myChart'));
+      chart.draw(data, options);
+      
+      }
+      </script>
     <!-- ... Previous code ... -->
-
+<div class="rajat-container">
 <section id="budget-alerts">
   <h2>Budget Alerts</h2>
-  <ul>
+  <ul class="rajat-ul ">
     <!-- List of alerts for specific expense categories nearing budget limits -->
-    <li><strong>Housing:</strong> You've almost reached your budget limit for this category.</li>
+    <li class="rajat-hoverable rajat-yellow rajat-round-xlarge" style="margin-bottom: 5px;">Housing: You've almost reached your budget limit for this category!
+    </li>
+    <li class="rajat-hoverable rajat-red rajat-round-xlarge" style="margin-bottom: 5px;">Food: You've reached over your budget limit for this category!
+    </li>
+    <li class="rajat-hoverable rajat-blue rajat-round-xlarge" style="margin-bottom: 5px;">Clothing: You've almost reached 50% of your budget limit for this category!
+    </li>
     <!-- Add more alerts for other categories as needed -->
   </ul>
 </section>
-
+</div>
+<img src="im5.svg" alt="Image" style="float: left; max-width: 550px;">
 <section id="budget-adjustments">
+  <br>
   <h2>Budget Adjustments</h2>
   <!-- Form for users to adjust budget amounts for each category -->
   <form id="budget-adjustment-form">
-    <label for="housing-budget">Housing Budget:</label>
-    <input type="number" id="housing-budget" name="housing-budget" value="XXXX">
-
-    <!-- Add similar input fields for other expense categories -->
-
-    <button type="submit">Update Budget</button>
+    <select class="rajat-margin rajat-large">
+          <option value=""></option>
+          <option value="1">Food Budget</option>
+          <option value="2">Travel Budget</option>
+          <option value="3">Entertainment Budget</option>
+          <option value="5">Clothing Budget</option>
+          <option value="6">Health Budget</option>
+          <option value="7">Housing Budget</option>
+          <option value="8">Utilities Budget</option>
+          <option value="9">Miscellaneous Budget</option>
+    </select>
+    <input class="rajat-margin" style="height:26px" type="number" id="option value" name="housing-budget" value="XXXX">
+    <br>
+    <button class="rajat-button rajat-hover-red rajat-black  rajat-animate-zoom rajat-round-xlarge" type="submit" href="/" style="padding:9px 10px">Update Budget</button>
   </form>
 </section>
-
+<br>
 <section id="budget-rollovers">
   <h2>Budget Rollovers</h2>
   <!-- Option for users to enable or disable budget rollovers -->
   <label for="enable-rollovers">Enable Budget Rollovers:</label>
   <input type="checkbox" id="enable-rollovers" name="enable-rollovers">
 </section>
-
+<br>
 <section id="progress-towards-goals">
   <h2>Progress Towards Goals</h2>
-  <ul>
+  <ul class="rajat-ul">
     <!-- List of financial goals and the progress towards achieving them -->
     <li><strong>Vacation Savings:</strong> 40% of the goal achieved.</li>
     <!-- Add more goals and their progress -->
   </ul>
 </section>
-
-<!-- ... Remaining code ... -->
-
-    <!-- Other sections or elements for alerts, adjustments, etc. -->
-
-  </main>
-
-  <footer>
-    <!-- Footer content -->
-  </footer>
+  <footer class="rajat-container rajat-padding-32 rajat-center rajat-opacity"> 
+    <div class="rajat-xlarge rajat-padding-32">
+      <i class="fab fa-facebook-square icon rajat-hover-opacity" style="padding:0px 10px;"></i>
+      <i class="fab fa-instagram icon rajat-hover-opacity" style="padding:0px 10px;"></i>
+      <i class="fab fa-linkedin icon rajat-hover-opacity" style="padding:0px 10px;"></i>
+   </div>
+   <!-- Footer end. -->
+   </footer>
 </body>
 </html>
