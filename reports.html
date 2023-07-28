@@ -1,31 +1,393 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
+<html>
+<head>
+  <title>Expense Tracker Reports</title>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Expense Tracker - Reports</title>
-    <link rel="stylesheet" href="styles.css">
-  </head>
-  <body>
-    <header>
-        <nav>
-          <h1>Expense Tracker</h1>
-          <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="expenses.html">Expenses</a></li>
-            <li><a href="budgets.html">Budgets</a></li>
-            <li><a href="reports.html">Reports</a></li>
-            <li><a href="login-signup.html">Login/Signup</a></li>
-          </ul>
-        </nav>
-      </header>            
-    <main>
-      <!-- Reports page content here -->
-      <h2>Reports</h2>
-      <p>This is the reports page of the Expense Tracker application.</p>
-    </main>
-    <footer>
-      <p>&copy; 2023 Expense Tracker. All rights reserved.</p>
-    </footer>
-  </body>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="bubble.css">
+    <link rel="stylesheet" href="STY1.css">
+    <link rel="stylesheet" href="STY.css">
+    <link rel="stylesheet" href="font1.css">
+    <link rel="stylesheet" href="font2.css">
+    <link rel="stylesheet" href="font3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <style>
+    body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
+    .rajat-bar,h1,button {font-family: "Montserrat", sans-serif}
+    .fa-anchor,.fa-coffee {font-size:200px}
+    </style>
+     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <!-- Navbar -->
+<div class="rajat-top">
+  <div class="rajat-bar rajat-red rajat-card rajat-right-align rajat-large">
+    <a class="rajat-bar-item rajat-button rajat-hide-medium rajat-hide-large rajat-right rajat-padding-large rajat-hover-white rajat-large rajat-red" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+    <a href="login-signup.html" class="rajat-bar-item rajat-button rajat-hide-small rajat-padding-large rajat-hover-white rajat-right">Login/Signup</a>
+    <a href="index.html" class="rajat-bar-item rajat-button rajat-padding-large rajat-white rajat-left">Home</a>
+    <a href="reports.html" class="rajat-bar-item rajat-button rajat-hide-small rajat-padding-large rajat-hover-white rajat-right">Reports</a>
+    <a href="budgets.html" class="rajat-bar-item rajat-button rajat-hide-small rajat-padding-large rajat-hover-white rajat-right">Budgets</a>
+    <a href="expenses.html" class="rajat-bar-item rajat-button rajat-hide-small rajat-padding-large rajat-hover-white rajat-right">Expenses</a>
+  </div>
+
+  <!-- Navbar on small screens -->
+  <div id="navDemo" class="rajat-bar-block rajat-white rajat-hide rajat-hide-large rajat-hide-medium rajat-large">
+          <li><a href="expenses.html">Expenses</a></li>
+          <li><a href="budgets.html">Budgets</a></li>
+          <li><a href="reports.html">Reports</a></li>
+          <li><a href="login-signup.html">Login/Signup</a></li>
+  </div>
+</div>
+
+<!-- Header -->
+<header class="rajat-container rajat-red rajat-center" style="padding:128px 16px">
+  <h1 class="rajat-margin rajat-jumbo">Expense Tracker Reports</h1>
+  <p class="rajat-xlarge">Track Your Expenses, Master Your Finances!</p>
+  </header>
+  <!-- Add a canvas for Expense Trend Chart -->
+<canvas id="expenseTrendChart" width="400" height="200"></canvas>
+
+<!-- Add a canvas for Expense vs. Income Chart -->
+<canvas id="expenseVsIncomeChart" width="400" height="200"></canvas>
+
+<!-- Add a canvas for Spending by Category Chart -->
+<canvas id="spendingByCategoryChart" width="400" height="200"></canvas>
+
+  <script>
+  // ... Previous JavaScript code ...
+
+  // Function to create the Expense Trend Chart
+  function createExpenseTrendChart(expenses) {
+    const ctx = document.getElementById('expenseTrendChart').getContext('2d');
+
+    // Sample data for the demo
+    const data = {
+      labels: ['July 1', 'July 5', 'July 10', 'July 15', 'July 20', 'July 25', 'July 30'],
+      datasets: [{
+        label: 'Expense Trend',
+        data: [50, 80, 120, 90, 110, 70, 100], // Replace with your actual data
+        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+        borderColor: 'rgba(75, 192, 192, 1)',
+        borderWidth: 1
+      }]
+    };
+
+    const options = {
+      responsive: true,
+      maintainAspectRatio: false,
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    };
+
+    new Chart(ctx, {
+      type: 'line',
+      data: data,
+      options: options
+    });
+  }
+
+  // Function to create the Expense vs. Income Chart
+  function createExpenseVsIncomeChart(expenses) {
+    const ctx = document.getElementById('expenseVsIncomeChart').getContext('2d');
+
+    // Sample data for the demo
+    const data = {
+      labels: ['Expense', 'Income'],
+      datasets: [{
+        data: [500, 800], // Replace with your actual data
+        backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)'],
+        borderColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)'],
+        borderWidth: 1
+      }]
+    };
+
+    const options = {
+      responsive: true,
+      maintainAspectRatio: false
+    };
+
+    new Chart(ctx, {
+      type: 'pie',
+      data: data,
+      options: options
+    });
+  }
+
+  // Function to create the Spending by Category Chart
+  function createSpendingByCategoryChart(expenses) {
+    const ctx = document.getElementById('spendingByCategoryChart').getContext('2d');
+
+    // Sample data for the demo
+    const data = {
+      labels: ['Food', 'Travel', 'Entertainment'],
+      datasets: [{
+        data: [200, 150, 100], // Replace with your actual data
+        backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(75, 192, 192, 0.2)'],
+        borderColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)', 'rgba(75, 192, 192, 1)'],
+        borderWidth: 1
+      }]
+    };
+
+    const options = {
+      responsive: true,
+      maintainAspectRatio: false
+    };
+
+    new Chart(ctx, {
+      type: 'bar',
+      data: data,
+      options: options
+    });
+  }
+ 
+  // Call the functions to fetch data and create the charts
+  async function displayReports() {
+    const expenses = await fetchExpenseData();
+    displayExpenseCategories(expenses);
+    displayAverageExpenses(expenses);
+    displayBudgetProgress(expenses);
+    createExpenseTrendChart(expenses);
+    createExpenseVsIncomeChart(expenses);
+    createSpendingByCategoryChart(expenses);
+    // Add more functions for other features like Top Expenses, Spending Patterns, etc.
+  }
+
+  displayReports();
+
+
+     function createExpenseTrendChart(expenses) {
+    const ctx = document.getElementById('expenseTrendChart').getContext('2d');
+
+    // Sample data for the demo
+    const data = {
+      labels: ['July 1', 'July 5', 'July 10', 'July 15', 'July 20', 'July 25', 'July 30'],
+      datasets: [{
+        label: 'Expense Trend',
+        data: [50, 80, 120, 90, 110, 70, 100], // Replace with your actual data
+        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+        borderColor: 'rgba(75, 192, 192, 1)',
+        borderWidth: 1
+      }]
+    };
+
+    const options = {
+      responsive: true,
+      maintainAspectRatio: false,
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    };
+
+    new Chart(ctx, {
+      type: 'line',
+      data: data,
+      options: options
+    });
+  }
+
+  // Function to create the Expense vs. Income Chart
+  function createExpenseVsIncomeChart(expenses) {
+    const ctx = document.getElementById('expenseVsIncomeChart').getContext('2d');
+
+    // Sample data for the demo
+    const data = {
+      labels: ['Expense', 'Income'],
+      datasets: [{
+        data: [500, 800], // Replace with your actual data
+        backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)'],
+        borderColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)'],
+        borderWidth: 1
+      }]
+    };
+
+    const options = {
+      responsive: true,
+      maintainAspectRatio: false
+    };
+
+    new Chart(ctx, {
+      type: 'pie',
+      data: data,
+      options: options
+    });
+  }
+
+  // Function to create the Spending by Category Chart
+  function createSpendingByCategoryChart(expenses) {
+    const ctx = document.getElementById('spendingByCategoryChart').getContext('2d');
+
+    // Sample data for the demo
+    const data = {
+      labels: ['Food', 'Travel', 'Entertainment'],
+      datasets: [{
+        data: [200, 150, 100], // Replace with your actual data
+        backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(75, 192, 192, 0.2)'],
+        borderColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)', 'rgba(75, 192, 192, 1)'],
+        borderWidth: 1
+      }]
+    };
+
+    const options = {
+      responsive: true,
+      maintainAspectRatio: false
+    };
+
+    new Chart(ctx, {
+      type: 'bar',
+      data: data,
+      options: options
+    });
+  }
+
+  // Call the functions to fetch data and create the charts
+  async function displayReports() {
+    const expenses = await fetchExpenseData();
+    displayExpenseCategories(expenses);
+    displayAverageExpenses(expenses);
+    displayBudgetProgress(expenses);
+    createExpenseTrendChart(expenses);
+    createExpenseVsIncomeChart(expenses);
+    createSpendingByCategoryChart(expenses);
+    // Add more functions for other features like Top Expenses, Spending Patterns, etc.
+  }
+
+  displayReports();
+    const expenses = [
+      { date: '2023-07-01', amount: 50, category: 'Food' },
+      { date: '2023-07-10', amount: 80, category: 'Travel' },
+      { date: '2023-07-15', amount: 25, category: 'Entertainment' },
+      // Add more sample data
+    ];
+
+    // Function to calculate the total sum of expenses
+    function calculateTotalExpenses() {
+      return expenses.reduce((total, expense) => total + expense.amount, 0);
+    }
+
+    // Function to calculate the highest and lowest expense categories
+    function calculateExpenseCategories() {
+      const categoryData = {};
+      expenses.forEach((expense) => {
+        categoryData[expense.category] = (categoryData[expense.category] || 0) + expense.amount;
+      });
+
+      const categories = Object.keys(categoryData);
+      const highestCategory = categories.reduce((a, b) => (categoryData[a] > categoryData[b] ? a : b));
+      const lowestCategory = categories.reduce((a, b) => (categoryData[a] < categoryData[b] ? a : b));
+
+      return { highestCategory, lowestCategory };
+    }
+
+    // Function to calculate and display the average expenses per month
+    function calculateAverageExpenses() {
+      const totalExpenses = calculateTotalExpenses();
+      const numMonths = 1; // Assuming one month of data for the demo
+      return totalExpenses / numMonths;
+    }
+
+    // Function to calculate and display the budget progress
+    function calculateBudgetProgress() {
+      const totalExpenses = calculateTotalExpenses();
+      const budget = 1000; // Sample budget amount for the demo
+      const remainingBudget = budget - totalExpenses;
+      const budgetProgress = (totalExpenses / budget) * 100;
+      return { remainingBudget, budgetProgress };
+    }
+
+    // Function to display the highest and lowest expense categories
+    function displayExpenseCategories() {
+      const { highestCategory, lowestCategory } = calculateExpenseCategories();
+      document.getElementById('highestCategory').textContent = highestCategory;
+      document.getElementById('lowestCategory').textContent = lowestCategory;
+    }
+
+    // Function to display the average expenses per month
+    function displayAverageExpenses() {
+      const averageExpenses = calculateAverageExpenses();
+      document.getElementById('averageExpenses').textContent = `$${averageExpenses.toFixed(2)}`;
+    }
+
+    // Function to display the budget progress
+    function displayBudgetProgress() {
+      const { remainingBudget, budgetProgress } = calculateBudgetProgress();
+      document.getElementById('remainingBudget').textContent = `$${remainingBudget.toFixed(2)}`;
+      document.getElementById('budgetProgress').textContent = `${budgetProgress.toFixed(2)}%`;
+    }
+
+    // Function to display top expenses
+    function displayTopExpenses() {
+      expenses.sort((a, b) => b.amount - a.amount);
+      const topExpensesList = document.getElementById('topExpenses');
+      topExpensesList.innerHTML = '';
+
+      for (let i = 0; i < Math.min(expenses.length, 5); i++) {
+        const expense = expenses[i];
+        const listItem = document.createElement('li');
+        listItem.textContent = `${expense.category}: $${expense.amount.toFixed(2)}`;
+        topExpensesList.appendChild(listItem);
+      }
+    }
+
+    // Function to display spending patterns
+    function displaySpendingPatterns() {
+      // Sample spending patterns data for the demo
+      const spendingPatterns = {
+        essential: 30,
+        nonEssential: 40,
+        discretionary: 30,
+      };
+
+      const essentialElement = document.getElementById('essentialSpending');
+      const nonEssentialElement = document.getElementById('nonEssentialSpending');
+      const discretionaryElement = document.getElementById('discretionarySpending');
+
+      essentialElement.textContent = `${spendingPatterns.essential}%`;
+      nonEssentialElement.textContent = `${spendingPatterns.nonEssential}%`;
+      discretionaryElement.textContent = `${spendingPatterns.discretionary}%`;
+    }
+
+    // Call the display functions to show the data
+    displayExpenseCategories();
+    displayAverageExpenses();
+    displayBudgetProgress();
+    displayTopExpenses();
+    displaySpendingPatterns();
+  </script>
+  <div class="rajat-container rajat-red rajat-center rajat-margin">
+  <!-- Display Highest and Lowest Expense Categories -->
+  <h2 >Highest Expense Category: <span id="highestCategory"></span></h2>
+  <h2>Lowest Expense Category: <span id="lowestCategory"></span></h2>
+
+  <!-- Display Average Expenses per Month -->
+  <h2>Average Expenses per Month: <span id="averageExpenses">$0.00</span></h2>
+
+  <!-- Display Budget Progress -->
+  <h2>Budget Progress: <span id="budgetProgress">0%</span></h2>
+  <h2>Remaining Budget: <span id="remainingBudget">$0.00</span></h2>
+
+  <!-- Display Top Expenses -->
+  <h2>Top Expenses:</h2>
+  <ul id="topExpenses"></ul>
+
+  <!-- Display Spending Patterns -->
+  <h2>Spending Patterns:</h2>
+  <p>Essential Spending: <span id="essentialSpending">0%</span></p>
+  <p>Non-Essential Spending: <span id="nonEssentialSpending">0%</span></p>
+  <p>Discretionary Spending: <span id="discretionarySpending">0%</span></p>
+</div>
+</body>
+<footer class="rajat-container rajat-padding-32 rajat-center rajat-opacity"> 
+  <div class="rajat-xlarge rajat-padding-32">
+    <i class="fab fa-facebook-square icon rajat-hover-opacity" style="padding:0px 10px;"></i>
+    <i class="fab fa-instagram icon rajat-hover-opacity" style="padding:0px 10px;"></i>
+    <i class="fab fa-linkedin icon rajat-hover-opacity" style="padding:0px 10px;"></i>
+ </div><p>&copy; 2023 Expense Tracker. All rights reserved.</p>
+ <!-- Footer end. -->
+ </footer>
 </html>
